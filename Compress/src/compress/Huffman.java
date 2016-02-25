@@ -10,14 +10,16 @@ public class Huffman{
        
        System.out.print("Please enter your text ");
        String in = scan.nextLine();
+       
        String ASCII="";
+       String newCode="";
        double size=in.length()*7;
        double newSize=0;
-       String newCode="";
+       
        int[] freq = new int[256];
        PriorityQueue < Tree >  PQ = new PriorityQueue < Tree >();
        
-       for(int i=0; i < in.length(); i++)
+       for(int i=0; i<in.length(); i++)
        {
            String binaryValue = Integer.toBinaryString((int)in.charAt(i));
            for(int j=7;j>binaryValue.length();j--)
@@ -38,8 +40,7 @@ public class Huffman{
            if(freq[i]>0)
            {
                 System.out.println("'"+(char)i+"' appeared "+freq[i]+((freq[i] == 1) ? " time" : " times"));
-                Node newletter=new Node((char)i,freq[i]);
-                Tree newTree=new Tree(newletter,freq[i]);
+                Tree newTree=new Tree(new Node((char)i),freq[i]);
                 insertTree(newTree,PQ);
             }
         }
